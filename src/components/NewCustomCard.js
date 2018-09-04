@@ -9,21 +9,22 @@ class NewCustomCard extends Component {
     this.state = {
       isTaskOverdue: '',
       isThreeDaysToDue: '',
-      today: todaysDate
+      today: todaysDate,
     };
 
     this.handleAdd = this.handleAdd.bind(this);
+    this.updateField = this.updateField.bind(this);
   }
 
-  updateField = (e) => {
+  updateField(e) {
     this.setState({
       [e.target.name]: e.target.value,
-    })
+    });
   }
 
-  handleAdd = (e) => {
+  handleAdd(e) {
     e.preventDefault();
-    this.props.onAdd(this.state)
+    this.props.onAdd(this.state);
   }
 
   render() {
@@ -32,83 +33,87 @@ class NewCustomCard extends Component {
         backgroundColor: 'white',
         borderRadius: '6px',
         padding: '5px',
-        maxWidth: '250px'
-      }}>
+        maxWidth: '250px',
+      }}
+      >
         <form onSubmit={this.handleAdd}>
           <div style={{
             display: 'flex',
             justifyContent: 'space-between',
-            marginBottom: '8px'
-          }}>
+            marginBottom: '8px',
+          }}
+          >
             <input
               style={{
                 borderRadius: '3px',
                 marginRight: '5px',
-                border: '1px solid gray'
+                border: '1px solid gray',
               }}
-              type="text" 
-              placeholder="Title" 
-              name="name" 
-              required 
-              onChange={(e) => {this.updateField(e)}}
+              type="text"
+              placeholder="Title"
+              name="name"
+              required
+              onChange={(e) => { this.updateField(e); }}
             />
-            <input
-              style={{
+              <input
+                style={{
                 borderRadius: '3px',
                 marginRight: '5px',
-                border: '1px solid gray'
+                border: '1px solid gray',
               }}
-              type="date" 
-              name="dueOn" 
-              onChange={(e) => {this.updateField(e)}}
-            />
-          
+                type="date"
+                name="dueOn"
+                onChange={(e) => { this.updateField(e); }}
+              />
+
           </div>
-          
-          <textarea 
-            style={{
+
+            <textarea
+              style={{
               width: '100%',
               borderRadius: '3px',
               marginRight: '5px',
               border: '1px solid gray',
               marginBottom: '8px',
-              resize: 'vertical'
+              resize: 'vertical',
             }}
-            type="text" 
-            placeholder="Description" 
-            name="body" 
-            required 
-            onChange={(e) => {this.updateField(e)}}
-          />
-          <div style={{
+              type="text"
+              placeholder="Description"
+              name="body"
+              required
+              onChange={(e) => { this.updateField(e); }}
+            />
+              <div style={{
             display: 'flex',
-            justifyContent: 'space-between'
-          }}>
-            <button 
-              style={{
+            justifyContent: 'space-between',
+          }}
+              >
+                <button
+                  style={{
                 background: 'green',
                 border: '0',
                 borderRadius: '6px',
                 padding: '5px 20px',
-                color: 'white'
+                color: 'white',
               }}
-              type="submit"
-            >Add</button>
-            <button
-              style={{
+                  type="submit"
+                >Add
+                </button>
+                  <button
+                    style={{
                 background: 'red',
                 border: '0',
                 borderRadius: '6px',
                 padding: '5px 20px',
-                color: 'white'
+                color: 'white',
               }}
-            >Cancel</button>
-          </div>
+                  >Cancel
+                  </button>
+              </div>
         </form>
       </div>
-    )
+    );
   }
-
 }
 
 export default NewCustomCard;
